@@ -941,31 +941,17 @@
           <tbody>
             <tr>
               <td>
-                <div class="service-name">Standard A1 / Certificate of Coverage</div>
+                <div class="service-name">A1 / Certificate of Coverage</div>
               </td>
-              <td><span class="badge badge-auto">Fully Automated</span></td>
-              <td class="td-price">£90</td>
+              <td></td>
+              <td class="td-price">£100</td>
             </tr>
             <tr>
               <td>
-                <div class="service-name">Complex A1 / Certificate of Coverage</div>
+                <div class="service-name">Posted Worker Notification</div>
               </td>
-              <td><span class="badge badge-manual">Partially Manual</span></td>
-              <td class="td-price">£110</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="service-name">Standard Posted Worker Notification</div>
-              </td>
-              <td><span class="badge badge-auto">Fully Automated</span></td>
+              <td></td>
               <td class="td-price">£150</td>
-            </tr>
-            <tr>
-              <td>
-                <div class="service-name">Complex Posted Worker Notification</div>
-              </td>
-              <td><span class="badge badge-manual">Partially Manual</span></td>
-              <td class="td-price">£225</td>
             </tr>
           </tbody>
         </table>
@@ -1016,31 +1002,19 @@
                       oninput="document.getElementById('lbl-pct').textContent=this.value+'%'; applyPct()">
                     <div class="slider-labels"><span>0%</span><span>100%</span></div>
                   </div>
-                  <p class="hint">Distributes total estimated filings across the four types below. Fine-tune the individual sliders to adjust the split.</p>
+                  <p class="hint">Distributes total estimated filings across the two filing types below. Fine-tune the individual sliders to adjust the split.</p>
                 </div>
 
                 <div class="input-group">
-                  <label>Standard A1 / CoC <span class="val" id="lbl-a1s">500</span></label>
-                  <input id="inp-a1s" type="range" min="0" max="20000" step="100" value="500"
-                    oninput="document.getElementById('lbl-a1s').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
+                  <label>A1 / CoC filings/yr <span class="val" id="lbl-a1">500</span></label>
+                  <input id="inp-a1" type="range" min="0" max="20000" step="100" value="500"
+                    oninput="document.getElementById('lbl-a1').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
                   <div class="slider-labels"><span>0</span><span>20k</span></div>
                 </div>
                 <div class="input-group" style="margin-top:1.25rem">
-                  <label>Complex A1 / CoC <span class="val" id="lbl-a1c">100</span></label>
-                  <input id="inp-a1c" type="range" min="0" max="20000" step="100" value="100"
-                    oninput="document.getElementById('lbl-a1c').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
-                  <div class="slider-labels"><span>0</span><span>20k</span></div>
-                </div>
-                <div class="input-group" style="margin-top:1.25rem">
-                  <label>Standard PWN <span class="val" id="lbl-pwns">200</span></label>
-                  <input id="inp-pwns" type="range" min="0" max="20000" step="100" value="200"
-                    oninput="document.getElementById('lbl-pwns').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
-                  <div class="slider-labels"><span>0</span><span>20k</span></div>
-                </div>
-                <div class="input-group" style="margin-top:1.25rem">
-                  <label>Complex PWN <span class="val" id="lbl-pwnc">50</span></label>
-                  <input id="inp-pwnc" type="range" min="0" max="20000" step="100" value="50"
-                    oninput="document.getElementById('lbl-pwnc').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
+                  <label>PWN filings/yr <span class="val" id="lbl-pwn">200</span></label>
+                  <input id="inp-pwn" type="range" min="0" max="20000" step="100" value="200"
+                    oninput="document.getElementById('lbl-pwn').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
                   <div class="slider-labels"><span>0</span><span>20k</span></div>
                 </div>
               </div>
@@ -1173,8 +1147,8 @@
     const pct     = parseInt(document.getElementById('inp-pct').value, 10);
     const total   = Math.round(assess * pct / 100);
 
-    const splits  = { a1s: 0.40, a1c: 0.10, pwns: 0.35, pwnc: 0.15 };
-    const ids     = ['a1s', 'a1c', 'pwns', 'pwnc'];
+    const splits  = { a1: 0.50, pwn: 0.50 };
+    const ids     = ['a1', 'pwn'];
 
     ids.forEach(id => {
       const slider = document.getElementById('inp-' + id);
@@ -1189,10 +1163,8 @@
   function calcUpdate() {
     const systems   = parseInt(document.getElementById('inp-systems').value, 10);
     const rawAssess = parseInt(document.getElementById('inp-assess').value, 10);
-    const a1s       = parseInt(document.getElementById('inp-a1s').value, 10);
-    const a1c       = parseInt(document.getElementById('inp-a1c').value, 10);
-    const pwns      = parseInt(document.getElementById('inp-pwns').value, 10);
-    const pwnc      = parseInt(document.getElementById('inp-pwnc').value, 10);
+    const a1        = parseInt(document.getElementById('inp-a1').value, 10);
+    const pwn       = parseInt(document.getElementById('inp-pwn').value, 10);
 
     const MIN_ASSESS = 10000;
     const assess = Math.max(rawAssess, MIN_ASSESS);
@@ -1203,11 +1175,9 @@
     const costPlatform   = 20000;
     const costSystems    = systems * 5000;
     const costAssess     = assess * 20;
-    const costA1s        = a1s * 90;
-    const costA1c        = a1c * 110;
-    const costPwns       = pwns * 150;
-    const costPwnc       = pwnc * 225;
-    const costDownstream = costA1s + costA1c + costPwns + costPwnc;
+    const costA1         = a1 * 100;
+    const costPwn        = pwn * 150;
+    const costDownstream = costA1 + costPwn;
     const costOngoing    = costAssess + costDownstream;
     const costYear1      = costPlatform + costSystems + costOngoing;
 
