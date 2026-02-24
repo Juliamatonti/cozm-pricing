@@ -1008,20 +1008,7 @@
                       oninput="document.getElementById('lbl-pct').textContent=this.value+'%'; applyPct()">
                     <div class="slider-labels"><span>0%</span><span>100%</span></div>
                   </div>
-                  <p class="hint">Distributes total estimated filings across the two filing types below. Fine-tune the individual sliders to adjust the split.</p>
-                </div>
-
-                <div class="input-group">
-                  <label>A1 / CoC filings/yr <span class="val" id="lbl-a1">500</span></label>
-                  <input id="inp-a1" type="range" min="0" max="20000" step="100" value="500"
-                    oninput="document.getElementById('lbl-a1').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
-                  <div class="slider-labels"><span>0</span><span>20k</span></div>
-                </div>
-                <div class="input-group" style="margin-top:1.25rem">
-                  <label>PWN filings/yr <span class="val" id="lbl-pwn">200</span></label>
-                  <input id="inp-pwn" type="range" min="0" max="20000" step="100" value="200"
-                    oninput="document.getElementById('lbl-pwn').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
-                  <div class="slider-labels"><span>0</span><span>20k</span></div>
+                  <p class="hint">Estimated downstream filings are split equally between A1 / CoC (£100) and PWN (£150).</p>
                 </div>
               </div>
 
@@ -1153,30 +1140,22 @@
     const pct     = parseInt(document.getElementById('inp-pct').value, 10);
     const total   = Math.round(assess * pct / 100);
 
-    const splits  = { a1: 0.50, pwn: 0.50 };
-    const ids     = ['a1', 'pwn'];
-
-    ids.forEach(id => {
-      const slider = document.getElementById('inp-' + id);
-      const val    = Math.min(Math.round(total * splits[id] / 100) * 100, parseInt(slider.max, 10));
-      slider.value = val;
-      document.getElementById('lbl-' + id).textContent = val.toLocaleString('en-GB');
-    });
-
     calcUpdate();
   }
 
   function calcUpdate() {
     const systems   = parseInt(document.getElementById('inp-systems').value, 10);
     const rawAssess = parseInt(document.getElementById('inp-assess').value, 10);
-    const a1        = parseInt(document.getElementById('inp-a1').value, 10);
-    const pwn       = parseInt(document.getElementById('inp-pwn').value, 10);
-
     const MIN_ASSESS = 10000;
     const assess = Math.max(rawAssess, MIN_ASSESS);
     const minWarn = document.getElementById('min-warning');
     if (rawAssess < MIN_ASSESS) { minWarn.classList.add('show'); }
     else { minWarn.classList.remove('show'); }
+
+    const pct            = parseInt(document.getElementById('inp-pct').value, 10);
+    const totalFilings   = Math.round(assess * pct / 100);
+    const a1             = Math.round(totalFilings * 0.50);
+    const pwn            = totalFilings - a1;
 
     const costPlatform   = 20000;
     const costSystems    = systems * 5000;
