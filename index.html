@@ -64,6 +64,24 @@
       text-decoration: none;
     }
 
+    .nav-logos {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--border);
+    }
+
+    .equinor-logo {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
     .nav-logo-text {
       font-size: 1.3rem;
       font-weight: 900;
@@ -815,6 +833,7 @@
 
 <!-- ── NAV ── -->
 <nav>
+  <div class="nav-logos">
   <a class="nav-logo" href="#">
     <svg class="logo-svg" viewBox="0 0 80 85" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <!-- 8-tooth gear, center (40,30), outer r=22, inner r=16 -->
@@ -849,6 +868,9 @@
     </svg>
     <span class="nav-logo-text">The Cozm</span>
   </a>
+  <div class="nav-divider"></div>
+  <img src="equinor.png" alt="Equinor" class="equinor-logo">
+  </div>
   <ul>
     <li><a href="#services">Services</a></li>
     <li><a href="#calculator">Calculator</a></li>
