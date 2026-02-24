@@ -705,6 +705,17 @@
     .enquiry-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem; }
     .enquiry-card > p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; font-weight: 500; }
 
+    .country-tag {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      background: var(--teal-pale);
+      border: 1px solid var(--teal-lt);
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--teal-dk);
+    }
+
     .enquiry-items {
       list-style: none;
       display: flex;
@@ -1178,13 +1189,49 @@
         <div class="fee-card">
           <div class="fee-card-label">A1 / Certificate of Coverage</div>
           <h3>Automated A1 &amp; CoC Filings</h3>
-          <p>Fully automated A1 and Certificate of Coverage applications are available across a wide range of EU and EEA member states, with most filings completed in under 60 seconds through our direct system integrations with national authorities.</p>
-          <ul class="enquiry-items" style="margin-bottom:0">
-            <li>Direct API connections to national authorities</li>
-            <li>Filings completed in under 60 seconds</li>
-            <li>Automated status tracking and audit trail</li>
-            <li>Coverage continuously expanding</li>
-          </ul>
+          <p>Fully automated A1 and Certificate of Coverage applications available across EU/EEA member states and bilateral agreement countries, with most filings completed in under 60 seconds.</p>
+
+          <div class="part-label" style="margin:1.25rem 0 0.75rem">
+            <span class="part-label-text">A1s — Fully Automated</span>
+            <span class="part-label-line"></span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.25rem">
+            <span class="country-tag">Austria</span>
+            <span class="country-tag">Belgium</span>
+            <span class="country-tag">Croatia</span>
+            <span class="country-tag">Denmark</span>
+            <span class="country-tag">Estonia</span>
+            <span class="country-tag">Germany</span>
+            <span class="country-tag">Ireland</span>
+            <span class="country-tag">Latvia</span>
+            <span class="country-tag">Liechtenstein</span>
+            <span class="country-tag">Malta</span>
+            <span class="country-tag">Netherlands</span>
+            <span class="country-tag">Poland</span>
+            <span class="country-tag">Switzerland</span>
+            <span class="country-tag">Sweden</span>
+            <span class="country-tag">United Kingdom</span>
+          </div>
+
+          <div class="part-label" style="margin:0 0 0.75rem">
+            <span class="part-label-text">CoCs — Fully Automated</span>
+            <span class="part-label-line"></span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.4rem">
+            <span class="country-tag">Belgium</span>
+            <span class="country-tag">Canada</span>
+            <span class="country-tag">Denmark</span>
+            <span class="country-tag">Germany</span>
+            <span class="country-tag">India</span>
+            <span class="country-tag">Ireland</span>
+            <span class="country-tag">Israel</span>
+            <span class="country-tag">Netherlands</span>
+            <span class="country-tag">Spain</span>
+            <span class="country-tag">Switzerland</span>
+            <span class="country-tag">Sweden</span>
+            <span class="country-tag">United Kingdom</span>
+            <span class="country-tag">USA</span>
+          </div>
         </div>
         <div class="fee-card">
           <div class="fee-card-label">Posted Worker Notifications</div>
