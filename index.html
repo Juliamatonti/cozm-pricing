@@ -1008,7 +1008,7 @@
                       oninput="document.getElementById('lbl-pct').textContent=this.value+'%'; applyPct()">
                     <div class="slider-labels"><span>0%</span><span>100%</span></div>
                   </div>
-                  <p class="hint">Estimated downstream filings are split equally between A1 / CoC (£100) and PWN (£150).</p>
+                  <p class="hint">Each downstream trip is assumed to require both an A1 / CoC filing (£100) and a Posted Worker Notification (£150).</p>
                 </div>
               </div>
 
@@ -1154,15 +1154,11 @@
 
     const pct            = parseInt(document.getElementById('inp-pct').value, 10);
     const totalFilings   = Math.round(assess * pct / 100);
-    const a1             = Math.round(totalFilings * 0.50);
-    const pwn            = totalFilings - a1;
 
     const costPlatform   = 20000;
     const costSystems    = systems * 5000;
     const costAssess     = assess * 20;
-    const costA1         = a1 * 100;
-    const costPwn        = pwn * 150;
-    const costDownstream = costA1 + costPwn;
+    const costDownstream = totalFilings * 250;
     const costOngoing    = costAssess + costDownstream;
     const costYear1      = costPlatform + costSystems + costOngoing;
 
