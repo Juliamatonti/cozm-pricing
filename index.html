@@ -6,7 +6,7 @@
   <title>The Cozm — Service Pricing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     /* ─── RESET ─────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +34,7 @@
     }
 
     body {
-      font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.65;
@@ -87,7 +87,7 @@
     nav a:hover { color: var(--teal); }
 
     /* ─── INLINE SVG LOGO ───────────────────────────────────────── */
-    .logo-svg { width: 38px; height: 38px; flex-shrink: 0; }
+    .logo-svg { width: 36px; height: 40px; flex-shrink: 0; }
 
     /* ─── HERO ──────────────────────────────────────────────────── */
     .hero {
@@ -223,7 +223,7 @@
       background: none;
       border: none;
       color: var(--muted);
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
       font-weight: 700;
       padding: 0.85em 1.5em;
@@ -479,7 +479,7 @@
     .downstream-header .input-section-label { margin-bottom: 0; }
 
     .pct-toggle {
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.72rem;
       font-weight: 800;
       background: rgba(66,191,191,0.12);
@@ -715,7 +715,7 @@
       border: 2px solid var(--teal);
       color: var(--teal-dk);
       background: transparent;
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 800;
       font-size: 0.88rem;
       padding: 0.65em 1.5em;
@@ -761,7 +761,7 @@
       display: inline-block;
       background: var(--teal);
       color: #fff;
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 800;
       font-size: 0.95rem;
       padding: 0.85em 2.2em;
@@ -816,27 +816,36 @@
 <!-- ── NAV ── -->
 <nav>
   <a class="nav-logo" href="#">
-    <!-- SVG recreation of The Cozm logo mark -->
-    <svg class="logo-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- Gear body -->
-      <path d="M40 8 L46 4 L50 10 L57 9 L58 16 L65 18 L63 25 L68 30 L64 36 L67 43 L61 46 L61 53 L54 54 L50 60 L43 58 L37 62 L32 57 L25 59 L22 53 L15 51 L16 44 L10 40 L13 33 L9 27 L15 23 L14 16 L21 14 L22 7 L29 8 L34 3 Z" fill="#42BFBF" opacity="0.15"/>
-      <!-- Simplified gear -->
-      <path d="M55 14.5L52.5 11L49 12.5L46.5 9.5L43 11.5L40 8.5L37 11.5L33.5 9.5L31 12.5L27.5 11L25 14.5L22 14.5L21 18.5L17.5 20L18 24L14.5 26.5L16 30L13.5 33.5L16.5 36.5L15.5 40.5L19 43L19.5 47L23 48L24.5 52L28.5 52.5L30.5 56L34.5 55.5L37.5 58.5L41 57L44.5 58.5L47.5 55.5L51.5 56L53.5 52.5L57.5 52L59 48L62.5 47L63 43L66.5 40.5L65.5 36.5L68.5 33.5L66 30L67.5 26.5L64 24L64.5 20L61 18.5L60 14.5Z" fill="#42BFBF"/>
-      <!-- Inner circle -->
-      <circle cx="40" cy="34" r="11" fill="white"/>
-      <circle cx="40" cy="34" r="9" fill="#42BFBF"/>
-      <!-- Rocket -->
-      <path d="M43 30L40 27L37 30L37 36L40 39L43 36Z" fill="white"/>
-      <path d="M37 32L35 34L37 36Z" fill="white" opacity="0.8"/>
-      <path d="M43 32L45 34L43 36Z" fill="white" opacity="0.8"/>
-      <circle cx="40" cy="33" r="1.2" fill="#42BFBF"/>
-      <!-- Pixel trail -->
-      <rect x="30" y="46" width="6" height="6" rx="1" fill="#42BFBF" opacity="0.9"/>
-      <rect x="22" y="52" width="5" height="5" rx="1" fill="#42BFBF" opacity="0.7"/>
-      <rect x="26" y="55" width="4" height="4" rx="1" fill="#42BFBF" opacity="0.6"/>
-      <rect x="16" y="60" width="4" height="4" rx="1" fill="#42BFBF" opacity="0.45"/>
-      <rect x="20" y="62" width="3" height="3" rx="0.5" fill="#42BFBF" opacity="0.35"/>
-      <rect x="12" y="66" width="3" height="3" rx="0.5" fill="#42BFBF" opacity="0.25"/>
+    <svg class="logo-svg" viewBox="0 0 80 85" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- 8-tooth gear, center (40,30), outer r=22, inner r=16 -->
+      <path d="M36.3 14.4 L36.6 8.3 L43.4 8.3 L43.7 14.4
+               L48.4 16.4 L52.9 12.2 L57.8 17.1 L53.6 21.6
+               L55.6 26.3 L61.7 26.6 L61.7 33.4 L55.6 33.7
+               L53.6 38.4 L57.8 42.9 L52.9 47.8 L48.4 43.6
+               L43.7 45.6 L43.4 51.7 L36.6 51.7 L36.3 45.6
+               L31.6 43.6 L27.1 47.8 L22.2 42.9 L26.4 38.4
+               L24.4 33.7 L18.3 33.4 L18.3 26.6 L24.4 26.3
+               L26.4 21.6 L22.2 17.1 L27.1 12.2 L31.6 14.4 Z"
+            fill="#42BFBF"/>
+      <!-- White ring + teal inner circle -->
+      <circle cx="40" cy="30" r="10" fill="white"/>
+      <circle cx="40" cy="30" r="8" fill="#42BFBF"/>
+      <!-- Rocket (pointing upper-right) -->
+      <path d="M43.5 25.5 L46 29 L40.5 36.5 L37.5 35 L35.5 31 L40 25.5 Z" fill="white"/>
+      <path d="M37.5 35 L34.5 37.5 L37 36.5 Z" fill="white"/>
+      <path d="M40.5 36.5 L41.5 39.5 L43.5 37 Z" fill="white"/>
+      <circle cx="41" cy="30" r="1.8" fill="#42BFBF"/>
+      <!-- Pixel trail (bottom-left, decreasing) -->
+      <rect x="28" y="54" width="6" height="6" rx="0.5" fill="#42BFBF"/>
+      <rect x="21" y="58" width="5" height="5" rx="0.5" fill="#42BFBF" opacity="0.9"/>
+      <rect x="25" y="62" width="5" height="5" rx="0.5" fill="#42BFBF" opacity="0.85"/>
+      <rect x="16" y="62" width="4" height="4" rx="0.5" fill="#42BFBF" opacity="0.75"/>
+      <rect x="20" y="67" width="4" height="4" rx="0.5" fill="#42BFBF" opacity="0.65"/>
+      <rect x="12" y="67" width="4" height="4" rx="0.5" fill="#42BFBF" opacity="0.55"/>
+      <rect x="16" y="72" width="3" height="3" rx="0.5" fill="#42BFBF" opacity="0.45"/>
+      <rect x="9"  y="72" width="3" height="3" rx="0.5" fill="#42BFBF" opacity="0.35"/>
+      <rect x="12" y="77" width="3" height="3" rx="0.5" fill="#42BFBF" opacity="0.25"/>
+      <rect x="6"  y="77" width="2" height="2" rx="0.5" fill="#42BFBF" opacity="0.18"/>
     </svg>
     <span class="nav-logo-text">The Cozm</span>
   </a>
@@ -1114,14 +1123,27 @@
 <!-- ── FOOTER ── -->
 <footer>
   <a class="footer-logo" href="#">
-    <svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M55 14.5L52.5 11L49 12.5L46.5 9.5L43 11.5L40 8.5L37 11.5L33.5 9.5L31 12.5L27.5 11L25 14.5L22 14.5L21 18.5L17.5 20L18 24L14.5 26.5L16 30L13.5 33.5L16.5 36.5L15.5 40.5L19 43L19.5 47L23 48L24.5 52L28.5 52.5L30.5 56L34.5 55.5L37.5 58.5L41 57L44.5 58.5L47.5 55.5L51.5 56L53.5 52.5L57.5 52L59 48L62.5 47L63 43L66.5 40.5L65.5 36.5L68.5 33.5L66 30L67.5 26.5L64 24L64.5 20L61 18.5L60 14.5Z" fill="#42BFBF"/>
-      <circle cx="40" cy="34" r="11" fill="white"/>
-      <circle cx="40" cy="34" r="9" fill="#42BFBF"/>
-      <path d="M43 30L40 27L37 30L37 36L40 39L43 36Z" fill="white"/>
-      <rect x="30" y="46" width="6" height="6" rx="1" fill="#42BFBF" opacity="0.9"/>
-      <rect x="22" y="52" width="4" height="4" rx="1" fill="#42BFBF" opacity="0.6"/>
-      <rect x="14" y="60" width="3" height="3" rx="0.5" fill="#42BFBF" opacity="0.35"/>
+    <svg width="28" height="30" viewBox="0 0 80 85" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M36.3 14.4 L36.6 8.3 L43.4 8.3 L43.7 14.4
+               L48.4 16.4 L52.9 12.2 L57.8 17.1 L53.6 21.6
+               L55.6 26.3 L61.7 26.6 L61.7 33.4 L55.6 33.7
+               L53.6 38.4 L57.8 42.9 L52.9 47.8 L48.4 43.6
+               L43.7 45.6 L43.4 51.7 L36.6 51.7 L36.3 45.6
+               L31.6 43.6 L27.1 47.8 L22.2 42.9 L26.4 38.4
+               L24.4 33.7 L18.3 33.4 L18.3 26.6 L24.4 26.3
+               L26.4 21.6 L22.2 17.1 L27.1 12.2 L31.6 14.4 Z"
+            fill="#42BFBF"/>
+      <circle cx="40" cy="30" r="10" fill="white"/>
+      <circle cx="40" cy="30" r="8" fill="#42BFBF"/>
+      <path d="M43.5 25.5 L46 29 L40.5 36.5 L37.5 35 L35.5 31 L40 25.5 Z" fill="white"/>
+      <path d="M37.5 35 L34.5 37.5 L37 36.5 Z" fill="white"/>
+      <path d="M40.5 36.5 L41.5 39.5 L43.5 37 Z" fill="white"/>
+      <circle cx="41" cy="30" r="1.8" fill="#42BFBF"/>
+      <rect x="28" y="54" width="6" height="6" rx="0.5" fill="#42BFBF"/>
+      <rect x="21" y="58" width="5" height="5" rx="0.5" fill="#42BFBF" opacity="0.9"/>
+      <rect x="16" y="62" width="4" height="4" rx="0.5" fill="#42BFBF" opacity="0.7"/>
+      <rect x="12" y="67" width="3" height="3" rx="0.5" fill="#42BFBF" opacity="0.5"/>
+      <rect x="8"  y="72" width="3" height="3" rx="0.5" fill="#42BFBF" opacity="0.3"/>
     </svg>
     <span class="footer-logo-text">The Cozm</span>
   </a>
