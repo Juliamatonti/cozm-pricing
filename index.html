@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Cozm — Service Pricing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ─── RESET ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --teal:      #42BFBF;
+      --teal-dk:   #2E9E9E;
+      --teal-lt:   #6FD4D4;
+      --teal-pale: #EAF8F8;
+      --teal-bg:   #F0FAFA;
+      --bg:        #FFFFFF;
+      --surface:   #F7FAFA;
+      --surface2:  #EEF7F7;
+      --border:    #D4ECEC;
+      --text:      #0F2626;
+      --text-md:   #2A4747;
+      --muted:     #6B8E8E;
+      --dark:      #0B1F1F;
+      --radius:    12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(15,38,38,0.08), 0 1px 2px rgba(15,38,38,0.04);
+      --shadow:    0 4px 16px rgba(15,38,38,0.1), 0 2px 6px rgba(15,38,38,0.06);
+      --shadow-lg: 0 8px 32px rgba(15,38,38,0.12), 0 4px 12px rgba(15,38,38,0.07);
+    }
+
+    body {
+      font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ─── NAV ───────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+    }
+
+    .nav-logo-text {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--teal);
+      letter-spacing: 0.01em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--teal); }
+
+    /* ─── INLINE SVG LOGO ───────────────────────────────────────── */
+    .logo-svg { width: 38px; height: 38px; flex-shrink: 0; }
+
+    /* ─── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--teal-bg) 0%, var(--bg) 60%);
+      padding: clamp(5rem, 12vw, 8rem) clamp(1.5rem, 5vw, 4rem) clamp(4rem, 10vw, 6rem);
+      text-align: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(66,191,191,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(66,191,191,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal-dk);
+      background: var(--teal-pale);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.4em 1.2em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 900;
+      max-width: 760px;
+      margin: 0 auto 1.25rem;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+    .hero h1 span { color: var(--teal); }
+
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      font-weight: 500;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 0.9em 2.4em;
+      border-radius: 100px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      box-shadow: 0 4px 16px rgba(66,191,191,0.4);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-cta:hover {
+      background: var(--teal-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(66,191,191,0.45);
+    }
+
+    /* ─── SECTION ───────────────────────────────────────────────── */
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-header h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+    .section-header p {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+      font-weight: 500;
+    }
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal-dk);
+      margin-bottom: 0.5rem;
+    }
+
+    .divider {
+      width: 40px;
+      height: 4px;
+      background: var(--teal);
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* ─── TABS ──────────────────────────────────────────────────── */
+    .tabs-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(3rem,6vw,5rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.4rem;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 3rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.85em 1.5em;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+      position: relative;
+      bottom: -2px;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .tab-btn:hover { color: var(--teal-dk); background: var(--teal-bg); }
+    .tab-btn.active {
+      color: var(--teal);
+      border-bottom-color: var(--teal);
+      background: var(--teal-pale);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ─── PART HEADING ──────────────────────────────────────────── */
+    .part-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .part-label-text {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .part-label-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.15em 0.6em;
+      color: var(--muted);
+    }
+    .part-label-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── FEE CARDS ─────────────────────────────────────────────── */
+    .fee-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .fee-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .fee-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-lt));
+    }
+    .fee-card:hover {
+      border-color: var(--teal);
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+
+    .fee-card-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal-dk);
+      margin-bottom: 0.5rem;
+    }
+
+    .fee-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .fee-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+    }
+
+    .fee-price {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--teal-dk);
+    }
+    .fee-price sub {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      vertical-align: middle;
+      margin-left: 0.25em;
+    }
+
+    .fee-note {
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .fee-note strong { color: var(--text-md); }
+
+    /* ─── DOWNSTREAM TABLE ──────────────────────────────────────── */
+    .table-wrap {
+      border-radius: var(--radius-lg);
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2.5rem;
+    }
+
+    .downstream-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .downstream-table thead th {
+      background: var(--surface2);
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 0.9em 1.5em;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .downstream-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .downstream-table tbody tr:hover { background: var(--teal-bg); }
+    .downstream-table tbody tr:last-child { border-bottom: none; }
+
+    .downstream-table td {
+      padding: 1.1em 1.5em;
+      vertical-align: middle;
+    }
+
+    .downstream-table .service-name {
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .downstream-table .service-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+      font-weight: 500;
+    }
+
+    .downstream-table .td-price {
+      color: var(--teal-dk);
+      font-weight: 900;
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3em 0.75em;
+      border-radius: 100px;
+    }
+    .badge-auto { background: rgba(66,191,191,0.12); color: var(--teal-dk); border: 1px solid rgba(66,191,191,0.3); }
+    .badge-manual { background: rgba(255,152,0,0.1); color: #C07800; border: 1px solid rgba(255,152,0,0.25); }
+
+    /* ─── CALCULATOR ────────────────────────────────────────────── */
+    .calculator {
+      background: var(--dark);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .calc-header {
+      background: #0F2F2F;
+      border-bottom: 1px solid rgba(66,191,191,0.2);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .calc-header-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(66,191,191,0.4);
+    }
+    .calc-header h3 { font-size: 1.1rem; font-weight: 800; color: #fff; }
+    .calc-header p { font-size: 0.88rem; color: rgba(255,255,255,0.55); font-weight: 500; }
+
+    .calc-body {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    @media (max-width: 720px) { .calc-body { grid-template-columns: 1fr; } }
+
+    .calc-inputs { display: flex; flex-direction: column; gap: 2rem; }
+
+    .input-section-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    .downstream-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .downstream-header .input-section-label { margin-bottom: 0; }
+
+    .pct-toggle {
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      background: rgba(66,191,191,0.12);
+      color: var(--teal-lt);
+      border: 1px solid rgba(66,191,191,0.3);
+      border-radius: 100px;
+      padding: 0.3em 0.85em;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .pct-toggle:hover {
+      background: rgba(66,191,191,0.22);
+      border-color: rgba(66,191,191,0.55);
+    }
+    .pct-toggle.active {
+      background: var(--teal);
+      color: #0B1F1F;
+      border-color: var(--teal);
+    }
+
+    .pct-section {
+      display: block;
+      background: rgba(66,191,191,0.07);
+      border: 1px solid rgba(66,191,191,0.2);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      margin-bottom: 1.25rem;
+    }
+    .pct-section .hint {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.4rem;
+      font-weight: 500;
+    }
+
+    .input-group label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.87rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.6rem;
+    }
+    .input-group label .val {
+      background: rgba(66,191,191,0.15);
+      color: var(--teal-lt);
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 0.2em 0.65em;
+      border-radius: 6px;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 5px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.12);
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--teal);
+      cursor: pointer;
+      border: 3px solid var(--dark);
+      box-shadow: 0 0 0 1px var(--teal), 0 2px 8px rgba(66,191,191,0.5);
+      transition: transform 0.15s;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.18); }
+    input[type="range"]::-moz-range-thumb {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--teal);
+      border: 3px solid var(--dark);
+      cursor: pointer;
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.28);
+      margin-top: 0.35rem;
+      font-weight: 600;
+    }
+
+    /* ─── RESULTS PANEL ─────────────────────────────────────────── */
+    .calc-results { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .results-title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 0.25rem;
+    }
+
+    .result-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .result-label strong {
+      display: block;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.85);
+      font-weight: 700;
+      margin-bottom: 0.1rem;
+    }
+    .result-label span {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.38);
+      font-weight: 500;
+    }
+
+    .result-value {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--teal-lt);
+      white-space: nowrap;
+      margin-left: 1rem;
+      text-align: right;
+    }
+
+    .result-total {
+      background: rgba(66,191,191,0.12);
+      border-color: rgba(66,191,191,0.35);
+      padding: 1.3rem 1.5rem;
+      margin-top: 0.5rem;
+    }
+    .result-total .result-label strong { font-size: 0.95rem; color: #fff; }
+    .result-total .result-value { font-size: 1.5rem; color: var(--teal); }
+
+    .result-ongoing {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .min-note {
+      font-size: 0.8rem;
+      color: rgba(255,200,50,0.85);
+      background: rgba(255,200,50,0.07);
+      border: 1px solid rgba(255,200,50,0.2);
+      border-radius: 8px;
+      padding: 0.65em 1em;
+      display: none;
+      align-items: flex-start;
+      gap: 0.5em;
+      font-weight: 600;
+    }
+    .min-note.show { display: flex; }
+    .min-note::before { content: '⚠'; flex-shrink: 0; }
+
+    .calc-disclaimer {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+
+    /* ─── ENQUIRY CARDS ─────────────────────────────────────────── */
+    .enquiry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .enquiry-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .enquiry-card:hover {
+      border-color: var(--teal);
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+    }
+
+    .enquiry-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: var(--teal-pale);
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .enquiry-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem; }
+    .enquiry-card > p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; font-weight: 500; }
+
+    .enquiry-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .enquiry-items li {
+      font-size: 0.88rem;
+      color: var(--text-md);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+    }
+    .enquiry-items li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid var(--teal);
+      color: var(--teal-dk);
+      background: transparent;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 0.65em 1.5em;
+      border-radius: 100px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--teal); color: #fff; }
+
+    /* ─── CTA SECTION ───────────────────────────────────────────── */
+    .cta-section {
+      background: var(--teal-bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+      text-align: center;
+    }
+
+    .cta-inner {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .cta-icon {
+      width: 72px; height: 72px;
+      border-radius: 20px;
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 8px 24px rgba(66,191,191,0.35);
+    }
+
+    .cta-inner h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 900; color: var(--dark); margin-bottom: 0.75rem; }
+    .cta-inner p { color: var(--muted); margin-bottom: 2rem; font-weight: 500; }
+
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--teal);
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 0.85em 2.2em;
+      border-radius: 100px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(66,191,191,0.4);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--teal-dk); transform: translateY(-1px); }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+    .footer-logo-text {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--teal);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--teal); }
+
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .fee-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">
+    <!-- SVG recreation of The Cozm logo mark -->
+    <svg class="logo-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Gear body -->
+      <path d="M40 8 L46 4 L50 10 L57 9 L58 16 L65 18 L63 25 L68 30 L64 36 L67 43 L61 46 L61 53 L54 54 L50 60 L43 58 L37 62 L32 57 L25 59 L22 53 L15 51 L16 44 L10 40 L13 33 L9 27 L15 23 L14 16 L21 14 L22 7 L29 8 L34 3 Z" fill="#42BFBF" opacity="0.15"/>
+      <!-- Simplified gear -->
+      <path d="M55 14.5L52.5 11L49 12.5L46.5 9.5L43 11.5L40 8.5L37 11.5L33.5 9.5L31 12.5L27.5 11L25 14.5L22 14.5L21 18.5L17.5 20L18 24L14.5 26.5L16 30L13.5 33.5L16.5 36.5L15.5 40.5L19 43L19.5 47L23 48L24.5 52L28.5 52.5L30.5 56L34.5 55.5L37.5 58.5L41 57L44.5 58.5L47.5 55.5L51.5 56L53.5 52.5L57.5 52L59 48L62.5 47L63 43L66.5 40.5L65.5 36.5L68.5 33.5L66 30L67.5 26.5L64 24L64.5 20L61 18.5L60 14.5Z" fill="#42BFBF"/>
+      <!-- Inner circle -->
+      <circle cx="40" cy="34" r="11" fill="white"/>
+      <circle cx="40" cy="34" r="9" fill="#42BFBF"/>
+      <!-- Rocket -->
+      <path d="M43 30L40 27L37 30L37 36L40 39L43 36Z" fill="white"/>
+      <path d="M37 32L35 34L37 36Z" fill="white" opacity="0.8"/>
+      <path d="M43 32L45 34L43 36Z" fill="white" opacity="0.8"/>
+      <circle cx="40" cy="33" r="1.2" fill="#42BFBF"/>
+      <!-- Pixel trail -->
+      <rect x="30" y="46" width="6" height="6" rx="1" fill="#42BFBF" opacity="0.9"/>
+      <rect x="22" y="52" width="5" height="5" rx="1" fill="#42BFBF" opacity="0.7"/>
+      <rect x="26" y="55" width="4" height="4" rx="1" fill="#42BFBF" opacity="0.6"/>
+      <rect x="16" y="60" width="4" height="4" rx="1" fill="#42BFBF" opacity="0.45"/>
+      <rect x="20" y="62" width="3" height="3" rx="0.5" fill="#42BFBF" opacity="0.35"/>
+      <rect x="12" y="66" width="3" height="3" rx="0.5" fill="#42BFBF" opacity="0.25"/>
+    </svg>
+    <span class="nav-logo-text">The Cozm</span>
+  </a>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#calculator">Calculator</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-eyebrow">Transparent Pricing</div>
+  <h1>Know Your Costs<br><span>Before You Commit</span></h1>
+  <p>Explore our service fees and model your estimated annual investment with the interactive calculator below.</p>
+  <a href="#services" class="hero-cta">Explore Pricing</a>
+</header>
+
+<!-- ── SERVICES TABS ── -->
+<section id="services">
+  <div class="tabs-wrapper">
+
+    <div class="tabs" role="tablist" aria-label="Service categories">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-travel" data-tab="travel">
+        ✈ Cozm Travel
+      </button>
+    </div>
+
+    <!-- ══ COZM TRAVEL ══ -->
+    <div id="panel-travel" class="tab-panel active" role="tabpanel">
+
+      <div class="section-header">
+        <p class="section-eyebrow">Pre-Travel Assessment Technology</p>
+        <h2>Cozm Travel Pricing</h2>
+        <p>A transparent three-part fee structure covering implementation, ongoing assessments, and downstream compliance filings.</p>
+        <div class="divider"></div>
+      </div>
+
+      <!-- Part 1 -->
+      <div class="part-label">
+        <span class="part-label-text">1 — Implementation Fees</span>
+        <span class="part-label-badge">One-off</span>
+        <span class="part-label-line"></span>
+      </div>
+
+      <div class="fee-grid">
+        <div class="fee-card">
+          <div class="fee-card-label">Platform Setup</div>
+          <h3>Pre-Travel Assessment Configuration</h3>
+          <p>Configure and implement global risk assessment technology covering immigration, personal income tax, corporate tax PE, social security, and EU Posted Worker Directive notifications.</p>
+          <div class="fee-price">£20,000 <sub>one-off</sub></div>
+        </div>
+        <div class="fee-card">
+          <div class="fee-card-label">Systems Integration</div>
+          <h3>HR &amp; Travel Booking Integration</h3>
+          <p>Connect Cozm Travel with your existing systems such as AMEX GBT and Workday.</p>
+          <div class="fee-price">£5,000 <sub>per system</sub></div>
+        </div>
+      </div>
+
+      <!-- Part 2 -->
+      <div class="part-label">
+        <span class="part-label-text">2 — Assessment Fees</span>
+        <span class="part-label-badge">Per assessment</span>
+        <span class="part-label-line"></span>
+      </div>
+
+      <div class="fee-grid" style="margin-bottom:2.5rem">
+        <div class="fee-card">
+          <div class="fee-card-label">All Compliance Areas</div>
+          <h3>Travel Risk Assessments</h3>
+          <p>Real-time pre-travel risk assessments across all compliance areas — immigration, income tax, corporate tax PE, social security, and EU PWD.</p>
+          <div class="fee-price">£20 <sub>per assessment</sub></div>
+          <p class="fee-note">Subject to a minimum of <strong>10,000 assessments per annum</strong> — minimum annual commitment <strong style="color:var(--teal-dk)">£200,000</strong></p>
+        </div>
+      </div>
+
+      <!-- Part 3 -->
+      <div class="part-label">
+        <span class="part-label-text">3 — Downstream Services</span>
+        <span class="part-label-badge">Per filing</span>
+        <span class="part-label-line"></span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="downstream-table">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Processing</th>
+              <th>Unit Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="service-name">Standard A1 / Certificate of Coverage</div>
+                <div class="service-desc">EU social security certificate — fully automated processing</div>
+              </td>
+              <td><span class="badge badge-auto">Fully Automated</span></td>
+              <td class="td-price">£90</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="service-name">Complex A1 / Certificate of Coverage</div>
+                <div class="service-desc">EU multi-state certificate — manual intervention required</div>
+              </td>
+              <td><span class="badge badge-manual">Partially Manual</span></td>
+              <td class="td-price">£110</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="service-name">Standard Posted Worker Notification</div>
+                <div class="service-desc">PWN filing — fully automated submission</div>
+              </td>
+              <td><span class="badge badge-auto">Fully Automated</span></td>
+              <td class="td-price">£150</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="service-name">Complex Posted Worker Notification</div>
+                <div class="service-desc">PWN filing — manual intervention required</div>
+              </td>
+              <td><span class="badge badge-manual">Partially Manual</span></td>
+              <td class="td-price">£225</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ── CALCULATOR ── -->
+      <div id="calculator">
+        <div class="calculator">
+          <div class="calc-header">
+            <div class="calc-header-icon">⚡</div>
+            <div>
+              <h3>Annual Cost Calculator</h3>
+              <p>Drag the sliders to model your estimated annual investment</p>
+            </div>
+          </div>
+
+          <div class="calc-body">
+            <!-- INPUTS -->
+            <div class="calc-inputs">
+
+              <div>
+                <div class="input-section-label">Implementation (one-off)</div>
+                <div class="input-group">
+                  <label>Systems to integrate <span class="val" id="lbl-systems">2</span></label>
+                  <input id="inp-systems" type="range" min="1" max="5" value="2"
+                    oninput="document.getElementById('lbl-systems').textContent=this.value; calcUpdate()">
+                  <div class="slider-labels"><span>1</span><span>5</span></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="input-section-label">Annual assessments</div>
+                <div class="input-group">
+                  <label>Assessments per year <span class="val" id="lbl-assess">25,000</span></label>
+                  <input id="inp-assess" type="range" min="10000" max="50000" step="1000" value="25000"
+                    oninput="document.getElementById('lbl-assess').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
+                  <div class="slider-labels"><span>10k</span><span>50k</span></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="input-section-label">Downstream filings per year</div>
+
+                <div class="pct-section" id="pct-section">
+                  <div class="input-group">
+                    <label>% of trips requiring downstream action <span class="val" id="lbl-pct">10%</span></label>
+                    <input id="inp-pct" type="range" min="0" max="100" step="1" value="10"
+                      oninput="document.getElementById('lbl-pct').textContent=this.value+'%'; applyPct()">
+                    <div class="slider-labels"><span>0%</span><span>100%</span></div>
+                  </div>
+                  <p class="hint">Distributes total estimated filings across the four types below. Fine-tune the individual sliders to adjust the split.</p>
+                </div>
+
+                <div class="input-group">
+                  <label>Standard A1 / CoC <span class="val" id="lbl-a1s">500</span></label>
+                  <input id="inp-a1s" type="range" min="0" max="20000" step="100" value="500"
+                    oninput="document.getElementById('lbl-a1s').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
+                  <div class="slider-labels"><span>0</span><span>20k</span></div>
+                </div>
+                <div class="input-group" style="margin-top:1.25rem">
+                  <label>Complex A1 / CoC <span class="val" id="lbl-a1c">100</span></label>
+                  <input id="inp-a1c" type="range" min="0" max="20000" step="100" value="100"
+                    oninput="document.getElementById('lbl-a1c').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
+                  <div class="slider-labels"><span>0</span><span>20k</span></div>
+                </div>
+                <div class="input-group" style="margin-top:1.25rem">
+                  <label>Standard PWN <span class="val" id="lbl-pwns">200</span></label>
+                  <input id="inp-pwns" type="range" min="0" max="20000" step="100" value="200"
+                    oninput="document.getElementById('lbl-pwns').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
+                  <div class="slider-labels"><span>0</span><span>20k</span></div>
+                </div>
+                <div class="input-group" style="margin-top:1.25rem">
+                  <label>Complex PWN <span class="val" id="lbl-pwnc">50</span></label>
+                  <input id="inp-pwnc" type="range" min="0" max="20000" step="100" value="50"
+                    oninput="document.getElementById('lbl-pwnc').textContent=Number(this.value).toLocaleString('en-GB'); calcUpdate()">
+                  <div class="slider-labels"><span>0</span><span>20k</span></div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- RESULTS -->
+            <div class="calc-results">
+              <div class="results-title">Cost Breakdown</div>
+
+              <div class="result-card">
+                <div class="result-label">
+                  <strong>Platform implementation</strong>
+                  <span>One-off setup fee</span>
+                </div>
+                <div class="result-value" id="res-platform">£20,000</div>
+              </div>
+
+              <div class="result-card">
+                <div class="result-label">
+                  <strong>Systems integration</strong>
+                  <span id="res-systems-desc">2 systems × £5,000</span>
+                </div>
+                <div class="result-value" id="res-systems">£10,000</div>
+              </div>
+
+              <div class="result-card">
+                <div class="result-label">
+                  <strong>Annual assessments</strong>
+                  <span id="res-assess-desc">25,000 × £20</span>
+                </div>
+                <div class="result-value" id="res-assess">£500,000</div>
+              </div>
+
+              <div class="result-card">
+                <div class="result-label">
+                  <strong>Downstream filings</strong>
+                  <span>A1 / CoC + PWN filings</span>
+                </div>
+                <div class="result-value" id="res-downstream">£—</div>
+              </div>
+
+              <div class="min-note" id="min-warning">
+                Minimum annual commitment is 10,000 assessments (£200,000/yr).
+              </div>
+
+              <div class="result-card result-total">
+                <div class="result-label">
+                  <strong>Estimated Year 1 Total</strong>
+                  <span>Includes one-off + first year running costs</span>
+                </div>
+                <div class="result-value" id="res-total">£—</div>
+              </div>
+
+              <div class="result-card result-ongoing">
+                <div class="result-label">
+                  <strong>Ongoing from Year 2+</strong>
+                  <span>Assessments + downstream only</span>
+                </div>
+                <div class="result-value" id="res-ongoing" style="font-size:0.95rem;color:rgba(255,255,255,0.6)">£—</div>
+              </div>
+
+              <p class="calc-disclaimer">Estimates only. Final pricing subject to commercial agreement with The Cozm.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /panel-travel -->
+
+
+  </div><!-- /tabs-wrapper -->
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <a class="footer-logo" href="#">
+    <svg width="28" height="28" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M55 14.5L52.5 11L49 12.5L46.5 9.5L43 11.5L40 8.5L37 11.5L33.5 9.5L31 12.5L27.5 11L25 14.5L22 14.5L21 18.5L17.5 20L18 24L14.5 26.5L16 30L13.5 33.5L16.5 36.5L15.5 40.5L19 43L19.5 47L23 48L24.5 52L28.5 52.5L30.5 56L34.5 55.5L37.5 58.5L41 57L44.5 58.5L47.5 55.5L51.5 56L53.5 52.5L57.5 52L59 48L62.5 47L63 43L66.5 40.5L65.5 36.5L68.5 33.5L66 30L67.5 26.5L64 24L64.5 20L61 18.5L60 14.5Z" fill="#42BFBF"/>
+      <circle cx="40" cy="34" r="11" fill="white"/>
+      <circle cx="40" cy="34" r="9" fill="#42BFBF"/>
+      <path d="M43 30L40 27L37 30L37 36L40 39L43 36Z" fill="white"/>
+      <rect x="30" y="46" width="6" height="6" rx="1" fill="#42BFBF" opacity="0.9"/>
+      <rect x="22" y="52" width="4" height="4" rx="1" fill="#42BFBF" opacity="0.6"/>
+      <rect x="14" y="60" width="3" height="3" rx="0.5" fill="#42BFBF" opacity="0.35"/>
+    </svg>
+    <span class="footer-logo-text">The Cozm</span>
+  </a>
+  <div>© 2026 The Cozm. All rights reserved.</div>
+</footer>
+
+<script>
+  /* ── TABS ── */
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById('panel-' + tab).classList.add('active');
+    });
+  });
+
+  /* ── CALCULATOR ── */
+  function fmt(n) {
+    return '£' + Math.round(n).toLocaleString('en-GB');
+  }
+
+  /* Distribute total downstream filings across the four sliders (40/10/35/15 split) */
+  function applyPct() {
+    const assess  = Math.max(parseInt(document.getElementById('inp-assess').value, 10), 10000);
+    const pct     = parseInt(document.getElementById('inp-pct').value, 10);
+    const total   = Math.round(assess * pct / 100);
+
+    const splits  = { a1s: 0.40, a1c: 0.10, pwns: 0.35, pwnc: 0.15 };
+    const ids     = ['a1s', 'a1c', 'pwns', 'pwnc'];
+
+    ids.forEach(id => {
+      const slider = document.getElementById('inp-' + id);
+      const val    = Math.min(Math.round(total * splits[id] / 100) * 100, parseInt(slider.max, 10));
+      slider.value = val;
+      document.getElementById('lbl-' + id).textContent = val.toLocaleString('en-GB');
+    });
+
+    calcUpdate();
+  }
+
+  function calcUpdate() {
+    const systems   = parseInt(document.getElementById('inp-systems').value, 10);
+    const rawAssess = parseInt(document.getElementById('inp-assess').value, 10);
+    const a1s       = parseInt(document.getElementById('inp-a1s').value, 10);
+    const a1c       = parseInt(document.getElementById('inp-a1c').value, 10);
+    const pwns      = parseInt(document.getElementById('inp-pwns').value, 10);
+    const pwnc      = parseInt(document.getElementById('inp-pwnc').value, 10);
+
+    const MIN_ASSESS = 10000;
+    const assess = Math.max(rawAssess, MIN_ASSESS);
+    const minWarn = document.getElementById('min-warning');
+    if (rawAssess < MIN_ASSESS) { minWarn.classList.add('show'); }
+    else { minWarn.classList.remove('show'); }
+
+    const costPlatform   = 20000;
+    const costSystems    = systems * 5000;
+    const costAssess     = assess * 20;
+    const costA1s        = a1s * 90;
+    const costA1c        = a1c * 110;
+    const costPwns       = pwns * 150;
+    const costPwnc       = pwnc * 225;
+    const costDownstream = costA1s + costA1c + costPwns + costPwnc;
+    const costOngoing    = costAssess + costDownstream;
+    const costYear1      = costPlatform + costSystems + costOngoing;
+
+    document.getElementById('res-systems-desc').textContent =
+      systems + ' system' + (systems !== 1 ? 's' : '') + ' × £5,000';
+    document.getElementById('res-assess-desc').textContent =
+      Number(assess).toLocaleString('en-GB') + ' × £20';
+
+    document.getElementById('res-platform').textContent   = fmt(costPlatform);
+    document.getElementById('res-systems').textContent    = fmt(costSystems);
+    document.getElementById('res-assess').textContent     = fmt(costAssess);
+    document.getElementById('res-downstream').textContent = fmt(costDownstream);
+    document.getElementById('res-total').textContent      = fmt(costYear1);
+    document.getElementById('res-ongoing').textContent    = fmt(costOngoing) + '/yr';
+
+    // Live teal fill on sliders
+    document.querySelectorAll('input[type="range"]').forEach(slider => {
+      const pct = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+      slider.style.background =
+        `linear-gradient(to right, #42BFBF ${pct}%, rgba(255,255,255,0.12) ${pct}%)`;
+    });
+  }
+
+  calcUpdate();
+
+</script>
+</body>
+</html>
