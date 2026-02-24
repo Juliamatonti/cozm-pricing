@@ -254,14 +254,10 @@
       border-radius: var(--radius) var(--radius) 0 0;
     }
     .tab-btn:hover { color: var(--teal-dk); background: var(--teal-bg); }
-    .tab-btn.active {
-      color: var(--teal);
-      border-bottom-color: var(--teal);
-      background: var(--teal-pale);
-    }
+    .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); background: var(--teal-pale); }
 
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
+    .tab-panel { display: block; padding-bottom: 3.5rem; border-bottom: 2px solid var(--border); margin-bottom: 3.5rem; }
+    .tab-panel:last-of-type { border-bottom: none; margin-bottom: 0; }
 
     /* ─── PART HEADING ──────────────────────────────────────────── */
     .part-label {
@@ -895,17 +891,17 @@
 <section id="services">
   <div class="tabs-wrapper">
 
-    <div class="tabs" role="tablist" aria-label="Service categories">
-      <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="panel-travel"      data-tab="travel">✈ Cozm Travel Pricing</button>
-      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-refs"        data-tab="refs">★ Client References</button>
-      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-automation"  data-tab="automation">⚙ Automation Coverage</button>
-      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-gdpr"        data-tab="gdpr">🔒 Data &amp; GDPR</button>
-      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-integration" data-tab="integration">⇄ Integration &amp; Implementation</button>
-      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="panel-rollout"     data-tab="rollout">◎ Rollout Approach</button>
-    </div>
+    <nav class="tabs" aria-label="Section navigation">
+      <a class="tab-btn" href="#panel-travel">✈ Cozm Travel Pricing</a>
+      <a class="tab-btn" href="#panel-refs">★ Client References</a>
+      <a class="tab-btn" href="#panel-automation">⚙ Automation Coverage</a>
+      <a class="tab-btn" href="#panel-gdpr">🔒 Data &amp; GDPR</a>
+      <a class="tab-btn" href="#panel-integration">⇄ Integration &amp; Implementation</a>
+      <a class="tab-btn" href="#panel-rollout">◎ Rollout Approach</a>
+    </nav>
 
     <!-- ══ COZM TRAVEL ══ -->
-    <div id="panel-travel" class="tab-panel active" role="tabpanel">
+    <div id="panel-travel" class="tab-panel" role="tabpanel">
 
       <div class="section-header">
         <p class="section-eyebrow">Pre-Travel Risk Assessment and Management Technology</p>
@@ -1520,21 +1516,6 @@
 </footer>
 
 <script>
-  /* ── TABS ── */
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tab = btn.dataset.tab;
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      document.getElementById('panel-' + tab).classList.add('active');
-    });
-  });
-
   /* ── CALCULATOR ── */
   function fmt(n) {
     return '£' + Math.round(n).toLocaleString('en-GB');
